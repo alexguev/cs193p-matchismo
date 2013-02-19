@@ -12,62 +12,77 @@
 @interface CardGameViewController ()
     @property (nonatomic) NSInteger flipCount;
     @property (strong, nonatomic) CardGame *game;
-    @property (strong, nonatomic) Deck *deck;
-    @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtonArray;
 
+    @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtonArray;
+    @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+    @property (weak, nonatomic) IBOutlet UISegmentedControl *cardsToMatchCountSegmentedControl;
+    @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @end
 
 @implementation CardGameViewController
 
--(Deck *)deck {
-    if (!_deck) {
-        _deck = [[Deck alloc] init];
+-(NSUInteger)cardsToMatchCount {
+    if (self.cardsToMatchCountSegmentedControl.selectedSegmentIndex == 1) {
+        return 3;
+    } else {
+        return 2;
     }
-    return _deck;
 }
 
 -(CardGame *)game {
     if (!_game) {
-        Deck *deck = [[Deck alloc] init];
         _game = [[CardGame alloc] initWithCardCount:self.cardButtonArray.count
-                                          usingDeck: deck];
+                               andCardsToMatchCount:[self cardsToMatchCount]
+                                          usingDeck:[[Deck alloc] init]];
     }
     return _game;
 }
 
 -(void)setCardButtonArray:(NSArray*) cardButtonArray {
     _cardButtonArray = cardButtonArray;
-    for (UIButton *cardButton in cardButtonArray) {
-        Card *card = [self.deck drawRandomCard];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-    }
+    [self updateUI];
     
 }
 
 -(void) setFlipCount:(NSInteger)flipCount {
     _flipCount = flipCount;
-    //self.flipCountLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-    NSLog(@"flips updated to %d", self.flipCount);
+    self.flipCountLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)flipCard:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    
+-(IBAction)flipCard:(UIButton *)sender {
     NSUInteger index = [self.cardButtonArray indexOfObject: sender];
     NSLog(@"Index %d", index);
-    
+    [self.game flipCardAtIndex:index];
+    if (self.flipCount==0) {
+        self.cardsToMatchCountSegmentedControl.enabled = NO;
+    }
     self.flipCount++;
+    [self updateUI];
 }
+
+- (IBAction)reset:(id)sender {
+    self.game = nil;
+    self.flipCount = 0;
+    self.cardsToMatchCountSegmentedControl.enabled = YES;
+    [self updateUI];
+}
+
+- (IBAction)changeCardsToMatchCount:(id)sender {
+    self.game = nil;
+}
+
+-(void)updateUI {
+    for (UIButton *cardButton in self.cardButtonArray) {
+        NSUInteger cardButtonIndex = [self.cardButtonArray indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardButtonIndex];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.selected = card.isFaceup;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
+    }
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score %d", self.game.score];
+}
+
 
 @end

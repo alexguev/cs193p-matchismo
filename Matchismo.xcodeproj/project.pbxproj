@@ -98,9 +98,9 @@
 			children = (
 				1B1BAECF16C84CAA00064E89 /* Deck.h */,
 				1B1BAED016C84CAA00064E89 /* Deck.m */,
-				1B8E3F6B16C0A3DC003870C0 /* CardGame.h */,
 				1B1BAED216C84E5A00064E89 /* Card.h */,
 				1B1BAED316C84E5A00064E89 /* Card.m */,
+				1B8E3F6B16C0A3DC003870C0 /* CardGame.h */,
 				1B8E3F6C16C0A3DC003870C0 /* CardGame.m */,
 			);
 			name = Model;

@@ -20,7 +20,19 @@
 }
 
 -(NSString *)contents {
-    return [NSString stringWithFormat:@"%d%@", self.rank, self.suit];
+    return [NSString stringWithFormat:@"%@%@", Card.rankStrings[self.rank], self.suit];
+}
+
+-(NSInteger)match:(NSArray *)otherCards {
+    NSInteger match = 0;
+    for (Card *otherCard in otherCards) {
+        if (self.suit == otherCard.suit) {
+            match += 1;
+        } else if (self.rank == otherCard.rank) {
+            match += 4;
+        }
+    }
+    return match;
 }
 
 + (NSArray *)rankStrings {
