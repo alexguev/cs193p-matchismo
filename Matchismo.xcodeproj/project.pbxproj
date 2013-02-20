@@ -159,8 +159,8 @@
 				1BF50CF316BDCF9E001C12E9 /* Matchismo-Info.plist */,
 				1BF50CF416BDCF9E001C12E9 /* InfoPlist.strings */,
 				1BF50CF716BDCF9E001C12E9 /* main.m */,
-				1BF50CF916BDCF9E001C12E9 /* Matchismo-Prefix.pch */,
 				1BF50CFD16BDCF9F001C12E9 /* Default.png */,
+				1BF50CF916BDCF9E001C12E9 /* Matchismo-Prefix.pch */,
 				1BF50CFF16BDCF9F001C12E9 /* Default@2x.png */,
 				1BF50D0116BDCF9F001C12E9 /* Default-568h@2x.png */,
 			);
