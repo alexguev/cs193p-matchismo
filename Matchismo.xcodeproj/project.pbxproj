@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B1BAED116C84CAA00064E89 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1BAED016C84CAA00064E89 /* Deck.m */; };
 		1B1BAED416C84E5A00064E89 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1BAED316C84E5A00064E89 /* Card.m */; };
+		1B1D76FB16D458D40072C499 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B1D76FA16D458D40072C499 /* cardback.png */; };
 		1B8E3F6D16C0A3DC003870C0 /* CardGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8E3F6C16C0A3DC003870C0 /* CardGame.m */; };
 		1BF50CEC16BDCF9E001C12E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF50CEB16BDCF9E001C12E9 /* UIKit.framework */; };
 		1BF50CEE16BDCF9E001C12E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF50CED16BDCF9E001C12E9 /* Foundation.framework */; };
@@ -43,6 +44,7 @@
 		1B1BAED016C84CAA00064E89 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		1B1BAED216C84E5A00064E89 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
 		1B1BAED316C84E5A00064E89 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
+		1B1D76FA16D458D40072C499 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 		1B8E3F6B16C0A3DC003870C0 /* CardGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardGame.h; path = Model/CardGame.h; sourceTree = "<group>"; };
 		1B8E3F6C16C0A3DC003870C0 /* CardGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardGame.m; path = Model/CardGame.m; sourceTree = "<group>"; };
 		1BF50CE816BDCF9E001C12E9 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 		1BF50CF216BDCF9E001C12E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1B1D76FA16D458D40072C499 /* cardback.png */,
 				1BF50CFA16BDCF9E001C12E9 /* CardGameAppDelegate.h */,
 				1BF50CFB16BDCF9E001C12E9 /* CardGameAppDelegate.m */,
 				1BF50CF316BDCF9E001C12E9 /* Matchismo-Info.plist */,
@@ -260,6 +263,7 @@
 				1BF50D0016BDCF9F001C12E9 /* Default@2x.png in Resources */,
 				1BF50D0216BDCF9F001C12E9 /* Default-568h@2x.png in Resources */,
 				1BF50D0516BDCF9F001C12E9 /* MainStoryboard.storyboard in Resources */,
+				1B1D76FB16D458D40072C499 /* cardback.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

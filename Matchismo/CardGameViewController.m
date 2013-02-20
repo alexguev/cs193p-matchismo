@@ -12,6 +12,7 @@
 @interface CardGameViewController ()
     @property (nonatomic) NSInteger flipCount;
     @property (strong, nonatomic) CardGame *game;
+    @property (strong, nonatomic) UIImage *cardBackImage;
 
     @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtonArray;
     @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -20,6 +21,14 @@
 @end
 
 @implementation CardGameViewController
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.cardBackImage = [UIImage imageNamed:@"cardback.png"];
+    }
+    return self;
+}
 
 -(NSUInteger)cardsToMatchCount {
     if (self.cardsToMatchCountSegmentedControl.selectedSegmentIndex == 1) {
@@ -80,6 +89,7 @@
         cardButton.selected = card.isFaceup;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
+        [cardButton setImage:(!card.isFaceup ? self.cardBackImage : nil) forState:UIControlStateNormal];
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score %d", self.game.score];
 }
