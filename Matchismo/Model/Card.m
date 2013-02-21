@@ -30,6 +30,9 @@
             match += 1;
         } else if (self.rank == otherCard.rank) {
             match += 4;
+        } else {
+            match = 0;
+            break;
         }
     }
     return match;
